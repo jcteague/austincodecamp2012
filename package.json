@@ -2,7 +2,10 @@
     "name": "Austin-Code-Camp-2012"
 	,"version": "0.0.1"
     ,"author": "John Teague"
-    ,"engine": "node ~> 0.6.x"
+    ,"engines":{
+        "node": "0.6.x"
+        ,"npm": "1.0.x"
+    }
     ,"dependencies": {
         	"coffee-script": "1.1.x"
         ,	"express" : "2.5.x"
