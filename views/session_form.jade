@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    form(action="/session/new",method="post")
+        p: input(id="firstName", name="firstName", placeholder="First Name")
+        p: input(type="text", id="lastName", name="lastName",placeholder="Last Name")
+        p: input(type="text", id="email", name="email",placeholder="Email Address")
+        p: textarea(id="bio",name="bio", placeholder="Bio")
+        h3 Presentations
+        p
+            input(type="text", name="presentations[0][title]", placeholder="title")
+            label(for="presentations[0][duration]") Duration
+            select(name="presentations[0][duration]")
+                option 1
+                option 2
+                option 4
+            input(type="text",name="presentations[0][description]",width=100,placeholder="description")
+        p
+            input(type="text", name="presentations[1][title]", placeholder="title")
+            label(for="presentations[1][duration]") Duration
+            select(name="presentations[1][duration]")
+                option 1
+                option 2
+                option 4
+            input(type="text",name="presentations[1][description]",width=100,placeholder="description")
+        p
+            input(type="text", name="presentations[2][title]", placeholder="title")
+            label(for="presentations[2][duration]") Duration
+            select(name="presentations[2][duration]")
+                option 1
+                option 2
+                option 4
+            input(type="text",name="presentations[2][description]",width=100,placeholder="description")
+        p
+            input(type="text", name="presentations[3][title]", placeholder="title")
+            label(for="presentations[3][duration]") Duration
+            select(name="presentations[3][duration]")
+                option 1
+                option 2
+                option 4
+            input(type="text",name="presentations[3][description]",width=100,placeholder="description")
+
+
+
+        p: input(type="submit")

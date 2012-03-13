@@ -1,0 +1,104 @@
+html,body,h1,h2,h3,h4,h5,h6,a{
+    background-color: #002b36;
+    color: #839496;
+}
+.empaphsized-content{
+    color:#93a1a1;
+
+}
+.secondary-content{
+    color:#586e75;
+}
+.background-highlight{
+    background-color:#073642;
+}
+
+.accent-yellow    {
+ color:#b58900
+}
+.accent-orange{    color:#cb4b16;}
+.accent-red{       color:#dc322f;}
+.accent-magenta{   color:#d33682;}
+.accent-violet{    color:#6c71c4;}
+.accent-blue{      color:#268bd2;}
+.accent-cyan{      color:#2aa198;}
+.accent-green{     color:#859900;}
+
+header{
+
+
+
+}
+.content{
+    display: none;
+    width:80%;
+    margin:auto;
+    min-height: 400px;
+    background-color: #073642;
+    box-shadow: 0 0 7px rgba(255,255,255,0.4);
+    -webkit-box-shadow: 0 0 7px rgba(255,255,255,,0.4);
+    -moz-box-shadow: 0 0 7px rgba(255,255,255,0.4);
+}
+.content.active{
+    display: block;
+}
+
+.content *{
+    background-color: #073642;
+}
+nav#action-nav{
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+
+}
+a.action-link,
+a.nav-item{
+    width:100px;
+    height: 60px;
+	margin: 0 .5em .5em .5em;
+	padding: .15em 1em;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: .214em;
+	-webkit-border-radius: .214em;
+	-moz-border-radius: .214em;
+	cursor: pointer;
+	background-color:#586e75;
+    color:#b58900;
+    text-shadow: 0 1px 1px #93a1a1;
+
+
+}
+a.action-link:hover,
+a.nav-item:hover{
+    background-color: #93a1a1;
+    color: #586e75;
+    box-shadow: 0 0 7px rgba(255,255,255,0.4);
+    -webkit-box-shadow: 0 0 7px rgba(255,255,255,,0.4);
+    -moz-box-shadow: 0 0 7px rgba(255,255,255,0.4);
+}
+nav#content-nav{
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+
+}
+
+div.center{
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+}
+h1.site-title{
+    font-size: 64px;
+    font-weight: bold;
+    /*color: #8B1A1A;*/
+     /*text-shadow: rgba(0,0,0,0.5) -1px 0,*/
+                  /*rgba(0,0,0,0.3) 0 -1px, */
+                  /*rgba(255,255,255,0.5) 0 1px, */
+                  /*rgba(0,0,0,0.3) -1px -2px;*/
+    text-align: center
+
+}
