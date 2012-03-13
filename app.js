@@ -65,7 +65,7 @@ var save_sessions = function(input){
 
 
 };
-var port = process.env.VMC_APP_PORT || 3000;
+var port = process.env.PORT || 3000;
 
 app.listen(port, function(){console.log("listening to port" + port)})
 
