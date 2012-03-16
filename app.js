@@ -1,4 +1,5 @@
 var express = require("express"),
+auth = require('connect-auth'),
 _ = require('underscore'),
 mongoose = require("mongoose");
 
@@ -16,7 +17,6 @@ app.configure(function(){
 	app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
 	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
-
 
 app.get('/',function(request,response){
 	response.render('index',{layout:false})
