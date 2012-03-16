@@ -21,6 +21,9 @@ app.configure(function(){
 app.get('/',function(request,response){
 	response.render('index',{layout:false})
 });
+app.get('/ejs_test',function(req,res){
+    res.render("ejs_test.ejs",{layout:false});
+});
 app.get('/session/new',function(request,response){
     response.render('session_form',{layout:false});
 });
