@@ -2,7 +2,7 @@ extends layout
 block content
     .content.active
         p You must first <a href="/register">Register</a> and be Logged In to submit sessions for code camp
-        if(errors)
+        if(typeof(errors) !== 'undefined')
 
             ul.errors
                 each e in errors

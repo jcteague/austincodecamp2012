@@ -1,4 +1,5 @@
 html,body,h1,h2,h3,h4,h5,h6,a{
+    font-size: 1.2em;
     background-color: #002b36;
     color: #839496;
 }
