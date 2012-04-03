@@ -3,44 +3,24 @@ extends layout
 block content
     .content.active
         form(action="/session/new",method="post")
-            p: input(type="text",id="firstName", name="firstName", placeholder="First Name")
-            p: input(type="text", id="lastName", name="lastName",placeholder="Last Name")
-            p: input(type="text", id="email", name="email",placeholder="Email Address")
-            p: textarea(id="bio",name="bio", placeholder="Bio")
+            != partial("registration-form")
             h3 Presentations
-            p
-                input.presentation-title(type="text", name="presentations[2][title]", placeholder="Title")
-                label(for="presentations[2][duration]") Duration
-                    select.presentation-duration(name="presentations[2][duration]")
-                        option 1
-                        option 2
-                        option 4
-                input.presentation-description(type="text",name="presentations[2][description]",width=100,placeholder="Description")
-            p
-                input.presentation-title(type="text", name="presentations[2][title]", placeholder="Title")
-                label(for="presentations[2][duration]") Duration
-                    select.presentation-duration(name="presentations[2][duration]")
-                        option 1
-                        option 2
-                        option 4
-                input.presentation-description(type="text",name="presentations[2][description]",width=100,placeholder="Description")
-            p
-                input.presentation-title(type="text", name="presentations[2][title]", placeholder="Title")
-                label(for="presentations[2][duration]") Duration
-                    select.presentation-duration(name="presentations[2][duration]")
-                        option 1
-                        option 2
-                        option 4
-                input.presentation-description(type="text",name="presentations[2][description]",width=100,placeholder="Description")
-            p
-                input.presentation-title(type="text", name="presentations[2][title]", placeholder="Title")
-                label(for="presentations[2][duration]") Duration
-                    select.presentation-duration(name="presentations[2][duration]")
-                        option 1
-                        option 2
-                        option 4
-                input.presentation-description(type="text",name="presentations[2][description]",width=100,placeholder="Description")
+            -for(var i = 0; i <=3; i++){
+                p
 
+                    input(type="hidden",name="presentations[#{i}][_id]");
+                    input.presentation-title(type="text", name="presentations[#{i}][title]", placeholder="Title")
+                    label(for="presentations[#{i}][duration]") Duration
+                        select.presentation-duration(name="presentations[#{i}][duration]")
+                            option(value="1") 1
+                            option(value="2") 2
+                            option(value="4") 4
+                    input.presentation-description(type="text",name="presentations[#{i}][description]",width=100,placeholder="Description")
+            -}
 
 
             p: input(type="submit")
+    script
+        var sessions = JSON.parse('!{presentations}');
+
+    script(src="/js/session.js")'

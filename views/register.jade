@@ -1,0 +1,24 @@
+extends layout
+mixin register_form
+
+block content
+    .content.active
+        -var show_form = true;
+        if isPost
+            if(errors)
+                ul.errors
+                each e in errors
+                    li= e
+
+            else
+                -show_form=false
+                p Thank you for registering.  You can now
+                  a(href="/sessions/new") Submit Sessions
+                  for Code Camp!
+        -if(show_form)
+            form(action="register",method="post")
+                != partial("registration-form")
+                input(type="submit")
+
+
+

@@ -1,0 +1,6 @@
+p: input(type="text",id="firstName", name="firstName", placeholder="First Name", value=user ? user.firstName : "")
+p: input(type="text", id="lastName", name="lastName",placeholder="Last Name", value=user ? user.lastName : "")
+p: input(type="text", id="email", name="email",placeholder="Email Address",value=user ? user.email : "")
+if !user
+    p: input(type="password", name="password",placeholder="Password")
+p: textarea(id="bio",name="bio", placeholder="Bio", value=user  ? user.bio : "")
