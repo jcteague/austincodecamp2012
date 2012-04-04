@@ -1,5 +1,5 @@
 $(function(){
-    $('input,textarea').placeHolder();
+    $('input,textarea').placeholder();
 
     $('a.nav-item').click(function(){
         var new_section_href = $(this).attr('href').replace('/','');
