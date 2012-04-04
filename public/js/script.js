@@ -1,4 +1,5 @@
 $(function(){
+
     $('a.nav-item').click(function(){
         var new_section_href = $(this).attr('href').replace('/','');
         var new_content = $(new_section_href);
@@ -14,3 +15,5 @@ $(function(){
         console.log(new_section)
     })
 });
+
+var show_content()

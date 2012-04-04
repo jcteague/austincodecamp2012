@@ -1,10 +1,12 @@
 var express = require("express"),
 _ = require('underscore'),
-mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/codecamp');
-var models = require('./Schemas.js');
-var path = __dirname;
-var app = express.createServer()
+mongoose = require("mongoose"),
+crypto = require("crypto");
+models = require('./Schemas.js'),
+path = __dirname,
+salt = "WwL1PNR9IOLNKw";
+app = express.createServer();
+
 app.set('view engine','jade');
 app.set('views', path + '/views');
 app.set('view options',{layout:false})
@@ -13,11 +15,22 @@ app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser());
-	app.use(express.session({ secret: 'esoognom'}));
+	app.use(express.session({ secret: 'eugeatnhoj'}));
 	app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
-	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
 
 });
+app.configure('production',function(){
+    mongoose.connect(process.env["MONGOHQ_URL"]);
+    app.use(express.errorHandler());
+});
+
+app.configure("development",function(){
+   mongoose.connect("mongodb://localhost/codecamp");
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
+})
+
 
 app.dynamicHelpers({
     isPost: function(req,res){ return res.req.method === 'POST'},
@@ -40,7 +53,8 @@ app.post('/login',function(req,res){
     else{
         findSpeakerByLogin(creds.email,function(err,user){
             if(user){
-                if(user.password === creds.password){
+                var hashed_password = createHash(creds.password);
+                if(user.password === hashed_password){
                     req.session.regenerate(function(){
                         req.session.user = user;
                         res.redirect('/session/new')
@@ -108,8 +122,12 @@ app.post('/session/new',function(request,response){
 
 });
 
+var createHash = function(input){
+    return crypto.createHmac('sha256', salt).update(input).digest('hex');
+};
 
 var register = function(input, cb){
+    input.password = createHash(input.password)
     var spkr = new models.Speaker(input);
     console.log("Speaker Model");
     console.log(spkr);
