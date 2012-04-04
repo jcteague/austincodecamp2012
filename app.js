@@ -26,7 +26,8 @@ app.configure('production',function(){
 });
 
 app.configure("development",function(){
-   mongoose.connect("mongodb://localhost/codecamp");
+    console.log("development config")
+    mongoose.connect("mongodb://localhost/codecamp");
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 })
