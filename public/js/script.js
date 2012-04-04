@@ -1,12 +1,12 @@
-Modernizr.load({
-    test: Modernizr.input.placeholder,
-    nope: [
-        'placeholder_polyfill.min.css',
-        'placeholder_polyfill.jquery.min.combo.js'
-    ]
-});
 
 $(function(){
+    Modernizr.load({
+        test: Modernizr.input.placeholder,
+        nope: [
+            'placeholder_polyfill.min.css',
+            'placeholder_polyfill.jquery.min.combo.js'
+        ]
+    });
 
     $('a.nav-item').click(function(){
         var new_section_href = $(this).attr('href').replace('/','');
@@ -24,4 +24,3 @@ $(function(){
     })
 });
 
-var show_content()
