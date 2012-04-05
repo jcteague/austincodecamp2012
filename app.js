@@ -3,6 +3,8 @@ _ = require('underscore'),
 mongoose = require("mongoose"),
 crypto = require("crypto");
 models = require('./Schemas.js'),
+mongoSessionStore = require('connect-mongodb'),
+
 path = __dirname,
 salt = "WwL1PNR9IOLNKw";
 app = express.createServer();
@@ -90,8 +92,6 @@ app.post('/register',function(req,res){
             return;
        }
        else{
-           console.log("response");
-           console.log(res);
            res.render('register',{locals:{errors:null}});
        }
 
