@@ -7,8 +7,9 @@ mongoSessionStore = require('connect-mongodb'),
 
 path = __dirname,
 salt = "WwL1PNR9IOLNKw";
-app = express.createServer();
-
+app = express.createServer(),
+mongo_url = process.env["MONGOHQ_URL"] || "mongodb://localhost/codecamp";
+console.log("mongodb connect to " + mongo_url);
 app.set('view engine','jade');
 app.set('views', path + '/views');
 app.set('view options',{layout:false})
@@ -16,8 +17,15 @@ app.configure(function(){
 	app.use(express.logger());
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
-	app.use(express.cookieParser());
-	app.use(express.session({ secret: 'eugeatnhoj'}));
+	app.use(express.cookieParser('codecamp'));
+	app.use(express.session({
+          key:'sid'
+        , secret: 'eugeatnhoj'
+        , cookie: {  path: '/', maxAge: 60000000 * 5,secret:"1202nitsua" }
+        , store: new mongoSessionStore({
+            url: mongo_url
+        })
+        }));
 	app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
 
 
@@ -108,7 +116,7 @@ app.get('/session/new',function(request,response){
                 user:request.session.user,
                 presentations: JSON.stringify(data)
             };
-            console.log("locals: %o", data)
+            console.log("session locals: %o", data)
             response.render('session_form',{locals: data});
         })
 
