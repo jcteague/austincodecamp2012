@@ -86,6 +86,12 @@ app.post('/login',function(req,res){
     }
 
 });
+
+app.get('/logout',function(req,res){
+    req.session.destroy();
+    res.redirect('/login')
+})
+
 app.get('/register',function(req,res){
     res.render('register')
 });
