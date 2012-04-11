@@ -133,10 +133,23 @@ input[type="password"]
 }
 textarea{
     font-size:14px;
+    vertical-align:bottom;
 }
+textarea.presentation-description{
+    margin: 0;
+    padding: 0;
+    height: 20px;
+}
+#processing-started-message,
+#processing-complete-message{
+    display: none;
+}
+
+
 label{
     padding-left: 1.5em;
     padding-right: 1.5em;
+
 }
 
 #sponsorship ul li{

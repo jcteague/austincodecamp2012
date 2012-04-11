@@ -15,11 +15,17 @@ block content
                             option(value="1") 1
                             option(value="2") 2
                             option(value="4") 4
-                    input.presentation-description(type="text",name="presentations[#{i}][description]",width=100,placeholder="Description")
+                    textarea.presentation-description(type="text",name="presentations[#{i}][description]",width=100,placeholder="Description")
             -}
 
 
-            p: input(type="submit")
+            p
+                input(id="session-submit", type="submit")
+                #processing-started-message
+                    h3 I am Submitting the Presentations for you ...
+                #processing-complete-message
+                    h3 I am done now.  Thank you!
+
     script
         var sessions = !{presentations};
 

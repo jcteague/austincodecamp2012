@@ -22,5 +22,6 @@ $(function(){
         var new_section_href = $(this).attr('href').replace('/','');
         switch_content(new_section_href);
     })
+
 });
 
