@@ -49,6 +49,13 @@ app.dynamicHelpers({
     user:   function(req,res){return req.session.user}
 });
 
+var loggedIn = function(request,response,next){
+    if(!request.session.user)
+        response.redirect('/login')
+    else
+        next();
+}
+
 app.get('/',function(request,response){
 	response.render('index')
 });
@@ -112,23 +119,17 @@ app.post('/register',function(req,res){
 
    })
 });
-app.get('/session/new',function(request,response){
-    if(!request.session.user){
-        response.redirect('/login')
-    }
-    else{
-        getSpeakerPresentations(request.session.user,function(data){
-            var data = {
-                user:request.session.user,
-                presentations: JSON.stringify(data)
-            };
-            console.log("session locals: %o", data)
-            response.render('session_form',{locals: data});
-        })
-
-    }
-
+app.get('/session/new',loggedIn, function(request,response){
+    getSpeakerPresentations(request.session.user,function(data){
+        var data = {
+            user:request.session.user,
+            presentations: JSON.stringify(data)
+        };
+        console.log("session locals: %o", data)
+        response.render('session_form',{locals: data});
+    })
 });
+
 app.post('/session/new',function(request,response){
     console.log("session submitted %o" ,request.body);
     save_sessions(request.session.user, request.body,function(){
