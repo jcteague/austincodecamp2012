@@ -13,7 +13,9 @@ process.on("error",function(err){
     console.log ("system error: %o", err)
 });
 process.on("SIGTERM",function(err){
-    console.log("sigterm error: %o",err)
+    console.log("sigterm error: %o",err);
+    process.exit(0);
+
 })
 
 process.on('uncaughtException', function(err) {
