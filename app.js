@@ -9,11 +9,12 @@ path = __dirname,
 salt = "WwL1PNR9IOLNKw";
 app = express.createServer(),
 mongo_url = process.env["MONGOHQ_URL"] || "mongodb://localhost/codecamp";
+
 process.on("error",function(err){
     console.log ("system error: %o", err)
 });
 process.on("SIGTERM",function(err){
-    console.log("sigterm error: %o",err);
+    console.log("sigterm event");
     process.exit(0);
 
 })
