@@ -9,6 +9,17 @@ path = __dirname,
 salt = "WwL1PNR9IOLNKw";
 app = express.createServer(),
 mongo_url = process.env["MONGOHQ_URL"] || "mongodb://localhost/codecamp";
+process.on("error",function(err){
+    console.log ("system error: %o", err)
+});
+process.on("SIGTERM",function(err){
+    console.log("sigterm error: %o",err)
+})
+
+process.on('uncaughtException', function(err) {
+    console.log( " UNCAUGHT EXCEPTION " );
+    console.log( "[Inside 'uncaughtException' event] " + err.stack || err.message );
+});
 console.log("mongodb connect to " + mongo_url);
 app.set('view engine','jade');
 app.set('views', path + '/views');
@@ -41,6 +52,7 @@ app.configure("development",function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 })
+
 
 
 app.dynamicHelpers({
