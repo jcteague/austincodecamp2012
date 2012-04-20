@@ -11,6 +11,18 @@ var PresentationSchema = new Schema({
     startTime: Date
 
 });
+
+PresentationSchema.statics.getPresentationsBySpeaker = function(speaker,next){
+    this.find({speakerId:speaker._id},function(err,results){
+        if(err){
+            console.log("error getting presentations");
+            console.log(err);
+        }
+        next(results);
+    })
+};
+
+
 var SpeakerSchema = new Schema({
   firstName: {type: String, required:true},
   lastName: {type: String, required:true},
@@ -19,5 +31,15 @@ var SpeakerSchema = new Schema({
   bio: String
 
 });
+SpeakerSchema.statics.findSpeakerByLogin = function(login, cb){
+    this.findOne({email:login},function(err,result){
+        console.log("speaker result")
+        console.log(result)
+        if(err){
+            cb(err)
+        }
+        cb(null,result);
+    })
+};
 exports.Presentation = mongoose.model("Presentation",PresentationSchema);
 exports.Speaker = mongoose.model("Speaker",SpeakerSchema);
