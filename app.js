@@ -8,7 +8,9 @@ authRoutes = require('./routes/auth.js'),
 sessionRoutes = require('./routes/sessions.js'),
 path = __dirname,
 app = express.createServer(),
-mongo_url = process.env["MONGOHQ_URL"] || "mongodb://localhost/codecamp";
+mongohq = "mongodb://johnt:johnt@staff.mongohq.com:10043/app3260344",
+local = mongodb://<user>:<password>@staff.mongohq.com:10043/app3260344,
+mongo_url = process.env["MONGOHQ_URL"] || mongohq;
 
 process.on("error",function(err){
     console.log ("system error: %o", err)
