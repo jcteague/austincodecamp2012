@@ -1,6 +1,16 @@
 extends layout
-
 block content
+    script(id="vote", type="text/html")
+        |<li class="vote-item">
+        |    <button class="vote" data-id={{_id}}>Vote</button>
+        |    <div class="presentation-title">{{title}}</div>
+        |    <div class="presentation-speaker">{{speakerName}}</div>
+        |    <div class="presentation-description">
+        |        <pre>{{description}}</pre>
+        |   </div>
+        |</li>
+
+
     #conference.content.active
         p
            The Austin .Net User Group is proud to sponsor it's fifth Annual Code Camp
@@ -59,3 +69,4 @@ block content
 
         p
             The closest hotel is the Courtyard by Marriott Arboretum
+

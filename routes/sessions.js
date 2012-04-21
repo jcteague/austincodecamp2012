@@ -19,6 +19,17 @@ exports.save = function(request,response){
     });
 };
 
+exports.list = function(request,response){
+    models.Presentation.find(function(err,data){
+        if(err){
+            console.log("error getting presentations %o", err)
+            response.send("error");
+        }
+        response.send(data);
+    })
+}
+
+
 var save_sessions = function(current_user, input,next){
 
     var update_data = {

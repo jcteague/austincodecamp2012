@@ -92,6 +92,8 @@ app.get('/session/new',loggedIn, sessionRoutes.showForm );
 
 app.post('/session/new',sessionRoutes.save);
 
+app.get('/session/list',sessionRoutes.list);
+
 var port = process.env.PORT || 3000;
 
 app.listen(port, function(){console.log("listening to port" + port)})
