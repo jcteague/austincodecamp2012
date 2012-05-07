@@ -27,6 +27,37 @@ exports.list = function(request,response){
         }
         response.send(data);
     })
+
+}
+
+exports.vote = function(request, response){
+    var session_id = request.body.id;
+    models.Presentation.findById(session_id,function(error, presentation){
+        if(error){
+            console.log("error finding presentation: " + error);
+            return error;
+
+        }
+        else if(null === presentation){
+            console.log("did not find presentation with id = "+session_id)
+        }
+        else{
+            presentation.voteCount +=1;
+
+            presentation.save(function(error){
+                if(error){
+                    console.log("error saving the vote: " + error);
+                    response.json(false);
+                }
+                else{
+                    response.json(true)
+                }
+
+            })
+        }
+
+
+    })
 }
 
 

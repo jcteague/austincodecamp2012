@@ -19,15 +19,23 @@ var set_active_content = function(){
 var show_voting = function(){
     $.getJSON('/session/list')
      .success(function(data){
-        var vote_content = [];
+        var sessionList = $('<ul>',{class:"vote-list"});
         $(data).each(function(pres){
             console.log(this);
-            vote_content.push(ich.vote(this).html())
+            sessionList.append(ich.vote(this));
         })
-        console.log(vote_content);
-        $('#schedule')
-            .append('<ul>',{class:"vote-list"})
-            .append(vote_content.join(''));
+
+        $('#schedule').append(sessionList)
+        $('.vote').on("click",function(){
+            console.log("vote button clicked")
+            var button = $(this)
+            var session_id = $(this).data("session-id");
+            $.post('/session/vote',{id:session_id},function(){
+                button.attr('disabled','disabled')
+            })
+
+        })
+
     })
 }
 $(function(){
@@ -38,6 +46,7 @@ $(function(){
         var new_section_href = $(this).attr('href').replace('/','');
         switch_content(new_section_href);
     })
+
 
 });
 

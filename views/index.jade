@@ -2,11 +2,15 @@ extends layout
 block content
     script(id="vote", type="text/html")
         |<li class="vote-item">
-        |    <button class="vote" data-id={{_id}}>Vote</button>
-        |    <span class="presentation-title">{{title}}</span>
-        |    <span class="presentation-speaker">{{speakerName}}</div>
-        |    <div class="presentation-description">
-        |        <pre>{{description}}</pre>
+        |   <div class="content active">
+        |       <h3 class="secondary-content">
+        |           <button class="vote" data-session-id="{{_id}}">Vote</button>
+        |           <span class="presentation-speaker">{{speakerName}}</span>
+        |           <span class="presentation-title ">{{title}}</span>
+        |          </h3>
+        |       <div class="presentation-description">
+        |            <pre>{{description}}</pre>
+        |       </div>
         |   </div>
         |</li>
 

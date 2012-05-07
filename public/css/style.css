@@ -28,11 +28,7 @@ html,body,h1,h2,h3,h4,h5,h6,a{
 .accent-cyan{      color:#2aa198;}
 .accent-green{     color:#859900;}
 
-header{
 
-
-
-}
 .content{
     display: none;
     padding-top: 1.5em;
@@ -154,4 +150,21 @@ label{
 
 #sponsorship ul li{
     font-style: italic;
+}
+.vote-item span{
+    display: inline-block;
+}
+.presentation-speaker{
+    width: 250px;
+
+}
+.presentation-title{
+
+}
+.presentation-description pre{
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }

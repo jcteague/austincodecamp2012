@@ -8,6 +8,7 @@ var PresentationSchema = new Schema({
     title:String,
     description: String,
     duration: {type:Number, default: 1},
+    voteCount: {type:Number, default: 0},
     startTime: Date
 
 });

@@ -9,8 +9,8 @@ sessionRoutes = require('./routes/sessions.js'),
 path = __dirname,
 app = express.createServer(),
 mongohq = "mongodb://johnt:johnt@staff.mongohq.com:10043/app3260344",
-local = mongodb://<user>:<password>@staff.mongohq.com:10043/app3260344,
-mongo_url = process.env["MONGOHQ_URL"] || mongohq;
+local = "mongodb://localhost/codecamp",
+mongo_url = process.env["MONGOHQ_URL"] || local;
 
 process.on("error",function(err){
     console.log ("system error: %o", err)
@@ -56,7 +56,7 @@ app.configure('production',function(){
 
 app.configure("development",function(){
     console.log("development config")
-    mongoose.connect("mongodb://localhost/codecamp");
+    mongoose.connect(mongo_url);
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 })
@@ -95,6 +95,8 @@ app.get('/session/new',loggedIn, sessionRoutes.showForm );
 app.post('/session/new',sessionRoutes.save);
 
 app.get('/session/list',sessionRoutes.list);
+
+app.post('/session/vote',sessionRoutes.vote);
 
 var port = process.env.PORT || 3000;
 
