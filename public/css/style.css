@@ -168,3 +168,25 @@ label{
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+.vote-list{
+    list-style-type: none;
+}
+.vote{
+    /*width:100px;*/
+    /*height: 60px;*/
+    margin: 0 .5em .5em .5em;
+    padding: .15em 1em .4em;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: .214em;
+    -webkit-border-radius: .214em;
+    -moz-border-radius: .214em;
+    cursor: pointer;
+    background-color:#586e75;
+    color:#b58900;
+    text-shadow: 0 1px 1px #93a1a1;
+    text-decoration: none;
+}
+.vote-disabled{
+    color:#839496;
+}
