@@ -2,7 +2,7 @@ extends layout
 block content
     script(id="vote", type="text/html")
         |<li class="vote-item">
-        |   <div class="content active">
+        |   <div class="content">
         |       <h3 class="secondary-content">
         |           <button class="vote" data-session-id="{{_id}}">Vote</button>
         |           <span class="presentation-speaker">{{speakerName}}</span>
@@ -23,9 +23,11 @@ block content
 
         p The Conference is on June 9, 2012 at St Edward's Professional Education Center from 8 am to 5 pm. Click the link on the Location Tab for additional information about St Edward's.
     #schedule.content
-        h2 Conference Schedule
-        p We are still in the process of accepting sessions for the conference
-        p If you are interested in presenting at the Austin Code Camp, please submit your proposals today
+        h2 Vote for Sessions!
+        p
+            |  Here is the list of submitted sessions.  Please vote for all of the sessions you are interested in attending.  This does not mean you <i>have to attend,  </i> Only
+            |  that your are interested in this presentation.
+        p We use this information to place presentations in the appropriate size room.
 
     #location.content
         h2
@@ -44,14 +46,18 @@ block content
         ul
             li Year Long Promotion through ADNUG Newsletter
             li Exhibit Space at Conference
-            li Logo Present at Conference (Signage and Printed Schedule)
+            li Logo Present at Conference on signage
             li Logo on Website
             li Logo on Opening Slide of Every Speakers Presentation
 
-        h3.accent-blue Gold Silver | $750
+        h3.accent-blue Silver | $750
         ul
             li Exhibit Space at Conference
-            li Logo Present at Conference (Printed Schedule)
+            li Logo Present at Conference on signage
+            li Logo on Website
+            li Logo on Opening Slide of Every Speakers Presentation
+        h3.accent-blue Silver | $500
+            li Logo Present at Conference on signage
             li Logo on Website
             li Logo on Opening Slide of Every Speakers Presentation
 

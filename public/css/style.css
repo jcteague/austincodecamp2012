@@ -41,8 +41,12 @@ html,body,h1,h2,h3,h4,h5,h6,a{
     -webkit-box-shadow: 0 0 7px rgba(255,255,255,,0.4);
     -moz-box-shadow: 0 0 7px rgba(255,255,255,0.4);
 }
+ul li div.content {
+    display:block;
+}
 
 .content.active{
+
     display: block;
 }
 
