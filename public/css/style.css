@@ -43,6 +43,7 @@ html,body,h1,h2,h3,h4,h5,h6,a{
 }
 ul li div.content {
     display:block;
+    min-height: 100px;
 }
 
 .content.active{
