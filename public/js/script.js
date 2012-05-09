@@ -21,13 +21,12 @@ var show_voting = function(){
      .success(function(data){
         var sessionList = $('<ul>',{class:"vote-list"});
         $(data).each(function(pres){
-            console.log(this);
+
             sessionList.append(ich.vote(this));
         })
 
         $('#schedule').append(sessionList)
         $('.vote').on("click",function(){
-            console.log("vote button clicked")
             var button = $(this)
             var session_id = $(this).data("session-id");
             $.post('/session/vote',{id:session_id},function(){
