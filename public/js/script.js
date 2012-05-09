@@ -19,7 +19,7 @@ var set_active_content = function(){
 var show_voting = function(){
     $.getJSON('/session/list')
      .success(function(data){
-        var sessionList = $('<ul>',{class:"vote-list"});
+        var sessionList = $('<ul>',{'class':"vote-list"});
         $(data).each(function(pres){
 
             sessionList.append(ich.vote(this));
