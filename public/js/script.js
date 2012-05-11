@@ -31,7 +31,7 @@ var show_voting = function(){
             var session_id = $(this).data("session-id");
             $.post('/session/vote',{id:session_id},function(){
                 button
-                    .text('Done')
+                    .text('Done') 
                     .attr('disabled','disabled')
                     .addClass("vote-disabled")
             })
