@@ -45,14 +45,14 @@ app.configure(function(){
             url: mongo_url
         })
         }));
-	app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
+    app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
 
 
 });
 app.configure('production',function(){
     mongoose.connect(process.env["MONGOHQ_URL"]);
     app.use(express.errorHandler());
-    app.use(express.static(path + '/public',{maxAge:oneDay}));  // Before router to enable dynamic routing
+    app.use(express.static(path + '/public',{maxAge:90000000}));  // Before router to enable dynamic routing
 });
 
 app.configure("development",function(){
