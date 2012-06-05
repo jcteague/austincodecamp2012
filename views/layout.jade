@@ -4,7 +4,7 @@ html(lang="en")
         meta(charset="utf-8")
         //meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
         //meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet",href="/css/screen.css")
+        link(rel="stylesheet",href="/css/screen.css", media="screen projection")
         link(rel="stylesheet",href="/css/print.css", media="print")
         \<!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
         link(rel="stylesheet",href="/css/style.css")
@@ -12,22 +12,39 @@ html(lang="en")
         script(src='/js/jquery-1.7.1.min.js')
         script(src='/js/jquery.placeholder.min.js')
     body
-        header
-            div.center
-                h1.site-title Austin Code Camp 2012
-            #actions
-                nav#action-nav
-                    a.accent-red.action-link(href='http://www.eventbrite.com/event/3028354891?ref=ebtnebtckt', target="_blank") Register Now
+        .container
+            header
+                div.center
+                    h1.site-title Austin Code Camp 2012
+                    div.span-24
+                        h4.center.accent-red Our Sponsors
+                        ul#sponsor-list.center.span-24
+                             li.span-6
+                                img(src="/images/teksystems.png",width="200", height="100")
+                             li.span-6
+                                img(src="/images/discountaspnet.png",width="200", height="100")
+                             li.span-6
+                                img(src="/images/avenida.png",width="200", height="100")
+                             li.span-6
+                                img(src="/images/headspring.png",width="200", height="100")
+                             li.span-6
+                                img(src="/images/guidbook.png",width="200", height="100")
 
-            nav#content-nav.center
-                a.nav-item(href='/#conference') Conference
-                a.nav-item(href='/#location') Location
-                a.nav-item(href='/#schedule') Schedule
-                a.nav-item(href='/#travel') Travel
-                a.nav-item(href='/#sponsorship') Sponsorship
-                a.nav-item(href='/#lightningtalks') Lightning Talks
-        #container
-            block content
+                #actions
+                    nav#action-nav
+                        a.accent-red.action-link(href='http://www.eventbrite.com/event/3028354891?ref=ebtnebtckt', target="_blank") Register Now
+
+                nav#content-nav.center
+                    a.nav-item(href='/#conference') Conference
+                    a.nav-item(href='/#location') Location
+                    a.nav-item(href='/#schedule') Schedule
+                    a.nav-item(href='/#travel') Travel
+                    a.nav-item(href='/#sponsorship') Sponsorship
+                    a.nav-item(href='/#lightningtalks') Lightning Talks
+
+            #contentsection
+                div.span-24
+                    block content
 
     script(src="/js/ICanHaz.min.js")
     script(src='/js/script.js')

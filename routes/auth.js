@@ -1,22 +1,30 @@
-var models = require('../Schemas.js'),
-    utils = require("../utils.js"),
+//var models = require('../Schemas.js'),
+var utils = require("../utils.js"),
     crypto = require("crypto"),
-    salt = "WwL1PNR9IOLNKw";
+    password_salt = "WwL1PNR9IOLNKw";
 
-;
-exports.loginScreen = function(request,response){response.render('login')};
 
-exports.loginUser = function(req,res){
-    creds = req.body;
+var AuthRoutes = function(speaker){
+    this.speakerModel = speaker;
+};
+
+AuthRoutes.prototype.loginScreen = function(request,response){response.render('login')};
+
+AuthRoutes.prototype.loginUser = function(req,res){
+    console.log("request " + req);
+    var creds = req.body;
     var locals = {errors:[]};
     if(!creds.email || !creds.password){
         locals.errors.push("email and password is required")
         res.render('login',{locals:locals});
     }
     else{
-        models.Speaker.findSpeakerByLogin(creds.email,function(err,user){
+        debugger;
+        var hashed_password = this.createHash(creds.password);
+        this.speakerModel.findSpeakerByLogin(creds.email,function(err,user){
+
             if(user){
-                var hashed_password = createHash(creds.password);
+
                 if(user.password === hashed_password){
                     req.session.regenerate(function(){
                         req.session.user = user;
@@ -38,12 +46,12 @@ exports.loginUser = function(req,res){
     }
 
 };
-exports.logoutUser = function(req,res){
+AuthRoutes.prototype.logoutUser = function(req,res){
     req.session.destroy();
     res.redirect('/login')
 };
 
-exports.registerUser = function(req,res){
+AuthRoutes.prototype.registerUser = function(req,res){
     console.log(req.body);
     register(req.body,function(err){
         if(err){
@@ -56,6 +64,9 @@ exports.registerUser = function(req,res){
             res.render('register',{locals:{errors:null}});
         }
     })
+};
+AuthRoutes.prototype.createHash = function(input){
+    return crypto.createHmac('sha256', password_salt).update(input).digest('hex');
 };
 
 var register = function(input, cb){
@@ -75,6 +86,5 @@ var register = function(input, cb){
     });
 };
 
-var createHash = function(input){
-    return crypto.createHmac('sha256', salt).update(input).digest('hex');
-};
+
+module.exports = AuthRoutes;

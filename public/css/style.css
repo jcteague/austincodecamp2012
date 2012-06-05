@@ -30,11 +30,12 @@ html,body,h1,h2,h3,h4,h5,h6,a{
 
 
 .content{
+
     display: none;
     padding-top: 1.5em;
     padding-left: 2em;
-    width:80%;
-    margin:auto;
+    /*width:80%;*/
+    /*margin:auto;*/
     min-height: 400px;
     background-color: #073642;
     box-shadow: 0 0 7px rgba(255,255,255,0.4);
@@ -46,6 +47,17 @@ ul li div.content {
     min-height: 100px;
 }
 
+#sponsor-list{
+    /*width:70%;*/
+    /*margin:auto;*/
+    list-style-type: none;
+    min-height: 110px;
+
+}
+#sponsor-list li{
+    float:left;
+    /*width:225px;*/
+}
 .content.active{
 
     display: block;
