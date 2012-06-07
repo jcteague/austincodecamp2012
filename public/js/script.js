@@ -44,7 +44,9 @@ $(function(){
     $('input,textarea').placeholder();
     set_active_content()
     //show_voting();
-    $('a.nav-item').click(function(){
+    $('a.nav-item').click(function(evt){
+        evt.preventDefault()
+
         var new_section_href = $(this).attr('href').replace('/','');
         switch_content(new_section_href);
     })
