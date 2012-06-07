@@ -46,7 +46,7 @@ app.configure(function(){
             url: mongo_url
         })
         }));
-    app.use(connect.compress());
+    //app.use(connect.compress());
     app.use(express.staticCache());
     app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
 
