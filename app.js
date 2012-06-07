@@ -52,7 +52,7 @@ app.configure(function(){
 app.configure('production',function(){
     mongoose.connect(process.env["MONGOHQ_URL"]);
     app.use(express.errorHandler());
-    //app.use(express.gzip());
+    app.use(express.gzip());
     app.use(express.static(path + '/public',{maxAge:60000000}));  // Before router to enable dynamic routing
 });
 
