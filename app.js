@@ -1,5 +1,5 @@
 var express = require("express"),
-
+connect = require("connect"),
 mongoose = require("mongoose"),
 
 models = require('./Schemas.js'),
@@ -37,7 +37,8 @@ app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('codecamp'));
-	app.use(express.session({
+
+    app.use(express.session({
           key:'sid'
         , secret: 'eugeatnhoj'
         , cookie: {  path: '/', maxAge: 60000000 * 5,secret:"1202nitsua" }
@@ -45,6 +46,8 @@ app.configure(function(){
             url: mongo_url
         })
         }));
+    app.use(connect.compress());
+    app.use(express.staticCache());
     app.use(express.static(path + '/public'));  // Before router to enable dynamic routing
 
 
@@ -52,7 +55,7 @@ app.configure(function(){
 app.configure('production',function(){
     mongoose.connect(process.env["MONGOHQ_URL"]);
     app.use(express.errorHandler());
-    //app.use(express.gzip());
+
     app.use(express.static(path + '/public',{maxAge:60000000}));  // Before router to enable dynamic routing
 });
 
