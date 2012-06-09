@@ -42,5 +42,8 @@ SpeakerSchema.statics.findSpeakerByLogin = function(login, cb){
         cb(null,result);
     })
 };
+
+
+
 exports.Presentation = mongoose.model("Presentation",PresentationSchema);
 exports.Speaker = mongoose.model("Speaker",SpeakerSchema);

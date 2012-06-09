@@ -82,7 +82,8 @@ var loggedIn = function(request,response,next){
 }
 
 app.get('/',function(request,response){
-	response.render('index')
+    res.setHeader('Date', new Date().toUTCString());
+    response.render('index')
 });
 
 app.get('/login',authRoutes.loginScreen);
